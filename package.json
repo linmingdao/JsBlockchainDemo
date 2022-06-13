@@ -1,0 +1,19 @@
+{
+  "name": "jsblockchaindemo",
+  "version": "1.0.0",
+  "description": "javascript写一个区块链demo",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/linmingdao/JsBlockchainDemo.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/linmingdao/JsBlockchainDemo/issues"
+  },
+  "homepage": "https://github.com/linmingdao/JsBlockchainDemo#readme"
+}
