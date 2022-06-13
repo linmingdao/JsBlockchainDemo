@@ -7,6 +7,7 @@ class Block {
     this.timestamp = timestamp;
     this.data = data;
     this.hash = this.calculateHash();
+    // 工作量POW（proof-of-work）
     this.nonce = 0;
   }
 
@@ -22,12 +23,23 @@ class Block {
       )
       .digest("hex");
   }
+
+  // 工作量计算
+  mineBlock(difficulty) {
+    while (
+      this.hash.substring(0, difficulty) !== Array(difficulty + 1).join("0")
+    ) {
+      this.nonce++;
+      this.hash = this.calculateHash();
+    }
+  }
 }
 
 // 区块链
 class BlockChain {
   constructor() {
     this.chain = [this.createGenesisBlock()];
+    this.difficulty = 5;
   }
 
   // 创建当下时间的区块（创世块）
@@ -43,7 +55,7 @@ class BlockChain {
   // 将新的区块添加到链上
   addBlock(newBlock) {
     newBlock.previousHash = this.getLatestBlock().hash;
-    newBlock.hash = newBlock.calculateHash();
+    newBlock.mineBlock(this.difficulty);
     this.chain.push(newBlock);
   }
 
