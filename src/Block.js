@@ -7,7 +7,7 @@ class Block {
     this.timestamp = timestamp;
     this.data = data;
     this.hash = this.calculateHash();
-    // 工作量POW（proof-of-work）
+    // 工作量证明，值越大则计算hash的工作量越大（POW，proof-of-work）
     this.nonce = 0;
   }
 
@@ -39,12 +39,13 @@ class Block {
 class BlockChain {
   constructor() {
     this.chain = [this.createGenesisBlock()];
+    // 难度系数
     this.difficulty = 5;
   }
 
   // 创建当下时间的区块（创世块）
   createGenesisBlock() {
-    return new Block(0, "2022/06/13 16:43:00", {});
+    return new Block(0, "2022/06/21", {});
   }
 
   // 获得区块链上最新的区块
@@ -74,6 +75,7 @@ class BlockChain {
         return false;
       }
     }
+
     return true;
   }
 }
